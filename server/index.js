@@ -13,7 +13,6 @@ app.use(express.urlencoded({limit: "30mb", extended: true}));
 
 app.use(cors());
 
-console.log("hello");
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "https://p-chat-kohl.vercel.app");
   res.header(
@@ -22,6 +21,14 @@ app.use((req, res, next) => {
   );
   res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
   next();
+});
+
+app.options("*", (req, res) => {
+  res.header(
+    "Access-Control-Allow-Methods",
+    "GET, POST, OPTIONS, PATCH, DELETE"
+  );
+  res.sendStatus(200);
 });
 
 app.use("/posts", postRoutes);
