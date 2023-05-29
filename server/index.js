@@ -8,7 +8,14 @@ import dotenv from "dotenv";
 const app = express();
 dotenv.config();
 
-app.use(cors());
+const corsOptions = {
+  origin: "https://p-chat-kohl.vercel.app",
+  methods: "GET, POST, OPTIONS",
+  allowedHeaders: "Content-Type",
+};
+
+app.use(cors(corsOptions));
+
 app.use(express.json({limit: "30mb", extended: true}));
 app.use(express.urlencoded({limit: "30mb", extended: true}));
 
@@ -16,17 +23,13 @@ app.use("/posts", postRoutes);
 app.use("/users", userRoutes);
 
 const PORT = process.env.PORT || 5000;
-console.log(process.env.CONNECTION_URL);
 
 mongoose
-  .connect(
-    "mongodb+srv://PKromash:Chessmaster04@cluster0.om3mhpa.mongodb.net/blog-project?retryWrites=true&w=majority/blog-project",
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      dbName: "blog-project",
-    }
-  )
+  .connect(process.env.CONNECTION_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    dbName: "blog-project",
+  })
   .then(() =>
     app.listen(PORT, () => console.log(`Server running on port: ${PORT}`))
   )
