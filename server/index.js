@@ -19,11 +19,14 @@ const PORT = process.env.PORT || 5000;
 console.log(process.env.CONNECTION_URL);
 
 mongoose
-  .connect(process.env.CONNECTION_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    dbName: "blog-project",
-  })
+  .connect(
+    "mongodb+srv://PKromash:Chessmaster04@cluster0.om3mhpa.mongodb.net/blog-project?retryWrites=true&w=majority/blog-project",
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      dbName: "blog-project",
+    }
+  )
   .then(() =>
     app.listen(PORT, () => console.log(`Server running on port: ${PORT}`))
   )
