@@ -11,7 +11,7 @@ dotenv.config();
 const corsOptions = {
   origin: "https://p-chat-kohl.vercel.app",
   methods: "GET, POST, OPTIONS",
-  allowedHeaders: "Content-Type",
+  allowedHeaders: "Content-Type, Authorization",
 };
 
 app.use(cors(corsOptions));
