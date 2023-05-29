@@ -8,13 +8,7 @@ import dotenv from "dotenv";
 const app = express();
 dotenv.config();
 
-const corsOptions = {
-  origin: "https://p-chat-kohl.vercel.app",
-  methods: "GET, POST, OPTIONS",
-  allowedHeaders: "Content-Type, Authorization",
-};
-
-app.use(cors(corsOptions));
+app.use(cors());
 
 app.use(express.json({limit: "30mb", extended: true}));
 app.use(express.urlencoded({limit: "30mb", extended: true}));
