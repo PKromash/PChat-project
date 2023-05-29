@@ -13,6 +13,7 @@ app.use(express.urlencoded({limit: "30mb", extended: true}));
 
 app.use(cors());
 
+console.log("hello");
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "https://p-chat-kohl.vercel.app");
   res.header(
