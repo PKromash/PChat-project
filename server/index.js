@@ -14,7 +14,10 @@ app.use(express.urlencoded({limit: "30mb", extended: true}));
 app.use(cors());
 
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "https://p-chat-kohl.vercel.app");
+  res.header(
+    "Access-Control-Allow-Origin",
+    "https://pchat-uwgm.onrender.com/posts"
+  );
   res.header(
     "Access-Control-Allow-Methods",
     "GET, POST, OPTIONS, PATCH, DELETE"
